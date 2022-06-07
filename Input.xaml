@@ -1,14 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Input" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ufa="clr-namespace:UiPath.Form.Activities;assembly=UiPath.Form.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Input" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ufa="clr-namespace:UiPath.Form.Activities;assembly=UiPath.Form.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="Out_url" Type="OutArgument(x:String)" />
-    <x:Property Name="Out_specific_research_points" Type="OutArgument(s:String[])" />
+    <x:Property Name="Out_specific_research_points" Type="OutArgument(scg:List(x:String))" />
     <x:Property Name="Out_url_provided" Type="OutArgument(x:Boolean)" />
     <x:Property Name="Out_specific_research_points_provided" Type="OutArgument(x:Boolean)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>824,1118.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>824,1211.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="29">
+    <scg:List x:TypeArguments="x:String" Capacity="58">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System</x:String>
@@ -38,10 +38,11 @@
       <x:String>System.Net.Mail</x:String>
       <x:String>Microsoft.VisualBasic</x:String>
       <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="31">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="62">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -73,9 +74,11 @@
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Input Sequence" sap:VirtualizedContainerService.HintSize="524.8,1053.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Input Sequence" sap:VirtualizedContainerService.HintSize="524.8,1146.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="input" />
       <Variable x:TypeArguments="njl:JObject" Name="deserialized_input" />
@@ -120,14 +123,28 @@
         <InArgument x:TypeArguments="x:String">[deserialized_input("url").ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Pick research_points" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Initialize Out_specific_research_points" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:String[]">[Out_specific_research_points]</OutArgument>
+        <OutArgument x:TypeArguments="scg:List(x:String)">[Out_specific_research_points]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="s:String[]">[deserialized_input("research_points").Cast(Of String).ToArray]</InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
       </Assign.Value>
     </Assign>
+    <ParallelForEach x:TypeArguments="njl:JObject" DisplayName="Parallel For Each" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_1" Values="[deserialized_input(&quot;research_points&quot;).Cast(Of JObject)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ActivityAction x:TypeArguments="njl:JObject">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="njl:JObject" Name="specific_research_point" />
+        </ActivityAction.Argument>
+        <AddToCollection x:TypeArguments="x:String" Collection="[Out_specific_research_points]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[specific_research_point(&quot;research_point&quot;).ToString]" />
+      </ActivityAction>
+    </ParallelForEach>
     <Assign DisplayName="Calculate url_provided" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">[Out_url_provided]</OutArgument>
@@ -141,7 +158,7 @@
         <OutArgument x:TypeArguments="x:Boolean">[Out_specific_research_points_provided]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Boolean">[Out_specific_research_points.Length &gt; 0]</InArgument>
+        <InArgument x:TypeArguments="x:Boolean">[Out_specific_research_points.Count &gt; 0]</InArgument>
       </Assign.Value>
     </Assign>
     <If Condition="[not Out_url_provided and not Out_specific_research_points_provided]" DisplayName="Throw if neither url nor specific_research_points was provided" sap:VirtualizedContainerService.HintSize="483.2,209.6" sap2010:WorkflowViewState.IdRef="If_1">
