@@ -1,6 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="824,898.4" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:maes="clr-namespace:Microsoft.Activities.Extensions.Statements;assembly=Microsoft.Activities.Extensions" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="In_X_TEXTRAZOR_KEY" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1327.2,1516</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="38">
+    <scg:List x:TypeArguments="x:String" Capacity="39">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -39,10 +47,11 @@
       <x:String>UiPath.Platform.Triggers</x:String>
       <x:String>UiPath.Platform.Triggers.Scope</x:String>
       <x:String>UiPath.Core.Activities.Orchestrator</x:String>
+      <x:String>Microsoft.Activities.Extensions.Statements</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -75,23 +84,27 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Web</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>Microsoft.Activities.Extensions</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Global Sequence" sap:VirtualizedContainerService.HintSize="603.2,833.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Global Sequence" sap:VirtualizedContainerService.HintSize="1337.6,1451.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Global Try Catch" sap:VirtualizedContainerService.HintSize="736.8,880" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Global Try Catch" sap:VirtualizedContainerService.HintSize="1296,1358.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Try Sequence" sap:VirtualizedContainerService.HintSize="700,648.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Sequence DisplayName="Global Try" sap:VirtualizedContainerService.HintSize="1259.2,1127.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:List(x:String)))" Name="research_points" />
+          </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Extraction Sequence" sap:VirtualizedContainerService.HintSize="375.2,206.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Extraction" sap:VirtualizedContainerService.HintSize="1217.6,1034.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="url_provided" />
               <Variable x:TypeArguments="x:Boolean" Name="specific_research_points_provided" />
@@ -103,27 +116,186 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Input workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Input.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Input workflow" sap:VirtualizedContainerService.HintSize="1176,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Input.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <OutArgument x:TypeArguments="x:String" x:Key="Out_url">
-                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="url" />
-                </OutArgument>
-                <OutArgument x:TypeArguments="s:String[]" x:Key="Out_specific_research_points">
-                  <mva:VisualBasicReference x:TypeArguments="s:String[]" ExpressionText="specific_research_points" />
-                </OutArgument>
-                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_url_provided">
-                  <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="url_provided" />
-                </OutArgument>
-                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">
-                  <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="specific_research_points_provided" />
-                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_url">[url]</OutArgument>
+                <OutArgument x:TypeArguments="s:String[]" x:Key="Out_specific_research_points">[specific_research_points]</OutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_url_provided">[url_provided]</OutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">[specific_research_points_provided]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
+            <Assign DisplayName="Initialize research_points" sap:VirtualizedContainerService.HintSize="1176,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:List(x:String)))">[research_points]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:List(x:String)))">[new Dictionary(Of String, Dictionary(Of String, List(Of String)))]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Parallel sap:VirtualizedContainerService.HintSize="1176,688" sap2010:WorkflowViewState.IdRef="Parallel_1">
+              <If Condition="[url_provided]" DisplayName="If url_provided" sap:VirtualizedContainerService.HintSize="519.2,641.6" sap2010:WorkflowViewState.IdRef="If_2">
+                <If.Then>
+                  <Sequence DisplayName="TextRazor Sequence" sap:VirtualizedContainerService.HintSize="375.2,492" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="njl:JObject[]" Name="entities" />
+                      <Variable x:TypeArguments="scg:Dictionary(x:String, scg:List(x:Decimal))" Name="relevances" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TextRazor workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="TextRazor.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="In_X_TEXTRAZOR_KEY">[In_X_TEXTRAZOR_KEY]</InArgument>
+                        <OutArgument x:TypeArguments="njl:JObject[]" x:Key="Out_entities">[entities]</OutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="In_url">[url]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <Assign DisplayName="Initialize relevances" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="scg:Dictionary(x:String, scg:List(x:Decimal))">[relevances]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:List(x:Decimal))">[new Dictionary(Of String, List(Of Decimal))]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ParallelForEach x:TypeArguments="njl:JObject" DisplayName="Aggregate entities" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_3" Values="[entities]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="njl:JObject">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="njl:JObject" Name="entity" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="478.4,484" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:String" Name="entity_id" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign DisplayName="Pick entity_id" sap:VirtualizedContainerService.HintSize="436.8,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[entity_id]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[entity("entityId").ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <TryCatch DisplayName="Entity Try Catch" sap:VirtualizedContainerService.HintSize="436.8,291.2" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                            <TryCatch.Try>
+                              <AddToCollection x:TypeArguments="x:Decimal" Collection="[relevances(entity_id)]" DisplayName="Add relevanceScore" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_6" Item="[Convert.ToDecimal(entity(&quot;relevanceScore&quot;))]" />
+                            </TryCatch.Try>
+                            <TryCatch.Catches>
+                              <Catch x:TypeArguments="scg:KeyNotFoundException" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ActivityAction x:TypeArguments="scg:KeyNotFoundException">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="scg:KeyNotFoundException" Name="_" />
+                                  </ActivityAction.Argument>
+                                  <Sequence DisplayName="Entity Catch" sap:VirtualizedContainerService.HintSize="624,1040.8" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="x:String" Name="wikipedia_link" />
+                                    </Sequence.Variables>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <maes:AddToDictionary x:TypeArguments="x:String, scg:List(x:Decimal)" Dictionary="[relevances]" DisplayName="Initialize relevance" sap:VirtualizedContainerService.HintSize="582.4,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_4" Key="[entity_id]" Value="[New List(Of Decimal)]" />
+                                    <AddToCollection x:TypeArguments="x:Decimal" Collection="[relevances(entity_id)]" DisplayName="Add relevanceScore" sap:VirtualizedContainerService.HintSize="582.4,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_7" Item="[Convert.ToDecimal(entity(&quot;relevanceScore&quot;))]" />
+                                    <maes:AddToDictionary x:TypeArguments="x:String, scg:Dictionary(x:String, scg:List(x:String))" Dictionary="[research_points]" DisplayName="Initialize research point" sap:VirtualizedContainerService.HintSize="582.4,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_5" Key="[entity_id]" Value="[New Dictionary(Of String, List(Of String))]" />
+                                    <Assign DisplayName="Pick wikipedia_link" sap:VirtualizedContainerService.HintSize="582.4,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[wikipedia_link]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[entity("wikiLink").ToString]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <If Condition="[wikipedia_link.Length &gt; 0]" DisplayName="If wikipedia_link exists" sap:VirtualizedContainerService.HintSize="582.4,440" sap2010:WorkflowViewState.IdRef="If_6">
+                                      <If.Then>
+                                        <Sequence DisplayName="wikipedia_link exists" sap:VirtualizedContainerService.HintSize="438.4,290.4" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                          <Sequence.Variables>
+                                            <Variable x:TypeArguments="x:String" Default="wikipedia_links" Name="Key_WIKIPEDIA_LINKS" />
+                                          </Sequence.Variables>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <maes:AddToDictionary x:TypeArguments="x:String, scg:List(x:String)" Dictionary="[research_points(entity_id)]" DisplayName="Initialize wikipedia_links" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_6" Key="[Key_WIKIPEDIA_LINKS]" Value="[New List(Of String)]" />
+                                          <AddToCollection x:TypeArguments="x:String" Collection="[research_points(entity_id)(Key_WIKIPEDIA_LINKS)]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="396.8,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_8" Item="[wikipedia_link]" />
+                                        </Sequence>
+                                      </If.Then>
+                                    </If>
+                                  </Sequence>
+                                </ActivityAction>
+                              </Catch>
+                            </TryCatch.Catches>
+                          </TryCatch>
+                        </Sequence>
+                      </ActivityAction>
+                    </ParallelForEach>
+                    <ParallelForEach x:TypeArguments="x:String" DisplayName="Filter relevant research_points" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_2" Values="[relevances.Keys.AsEnumerable()]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="x:String">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:String" Name="research_point" />
+                        </ActivityAction.Argument>
+                        <Sequence sap:VirtualizedContainerService.HintSize="582.4,652.8" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="scg:List(x:Decimal)" Name="relevance" />
+                            <Variable x:TypeArguments="x:Decimal" Name="relevance_average" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <maes:GetFromDictionary x:TypeArguments="x:String, scg:List(x:Decimal)" Dictionary="[relevances]" DisplayName="Get from dictionary" sap:VirtualizedContainerService.HintSize="540.8,135.2" sap2010:WorkflowViewState.IdRef="GetFromDictionary`2_1" Key="[research_point]" Value="[relevance]" />
+                          <Assign DisplayName="Calculate average relevance" sap:VirtualizedContainerService.HintSize="540.8,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Decimal">[relevance_average]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Decimal">[relevance.Sum / relevance.Count]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <If Condition="[relevance_average &lt; 0.9]" sap:VirtualizedContainerService.HintSize="540.8,284.8" sap2010:WorkflowViewState.IdRef="If_5">
+                            <If.Then>
+                              <maes:RemoveFromDictionary x:TypeArguments="x:String, scg:Dictionary(x:String, scg:List(x:String))" Dictionary="[research_points]" DisplayName="Remove from dictionary" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="RemoveFromDictionary`2_1" Key="[research_point]" />
+                            </If.Then>
+                          </If>
+                        </Sequence>
+                      </ActivityAction>
+                    </ParallelForEach>
+                  </Sequence>
+                </If.Then>
+              </If>
+              <If Condition="[specific_research_points_provided]" DisplayName="If specific_research_points_provided" sap:VirtualizedContainerService.HintSize="483.2,641.6" sap2010:WorkflowViewState.IdRef="If_3" />
+            </Parallel>
           </Sequence>
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="703.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1262.4,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
