@@ -1,12 +1,12 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="InitializeResearchPoint" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:maes="clr-namespace:Microsoft.Activities.Extensions.Statements;assembly=Microsoft.Activities.Extensions" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="In_research_points" Type="InArgument(scg:Dictionary(x:String, scg:Dictionary(x:String, scg:List(x:String))))" />
+    <x:Property Name="In_research_points" Type="InArgument(scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))))" />
     <x:Property Name="InKey_WIKIPEDIA_LINKS" Type="InArgument(x:String)" />
     <x:Property Name="In_research_point" Type="InArgument(x:String)" />
     <x:Property Name="InKey_JOURNAL_LINKS" Type="InArgument(x:String)" />
     <x:Property Name="InKey_YOUTUBE_LINKS" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1208,822.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>825.6,818.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -84,15 +84,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <maes:AddToDictionary x:TypeArguments="x:String, scg:Dictionary(x:String, scg:List(x:String))" Dictionary="[In_research_points]" DisplayName="Initialize research point" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_5" Key="[In_research_point]" Value="[New Dictionary(Of String, List(Of String))]">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </maes:AddToDictionary>
-    <maes:AddToDictionary x:TypeArguments="x:String, scg:List(x:String)" Dictionary="[In_research_points(In_research_point)]" DisplayName="Initialize wikipedia_links" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_6" Key="[InKey_WIKIPEDIA_LINKS]" Value="[New List(Of String)]" />
-    <maes:AddToDictionary x:TypeArguments="x:String, scg:List(x:String)" Dictionary="[In_research_points(In_research_point)]" DisplayName="Initialize journal_links" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_7" Key="[InKey_JOURNAL_LINKS]" Value="[New List(Of String)]" />
-    <maes:AddToDictionary x:TypeArguments="x:String, scg:List(x:String)" Dictionary="[In_research_points(In_research_point)]" DisplayName="Initialize youtube_links" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_8" Key="[InKey_YOUTUBE_LINKS]" Value="[New List(Of String)]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))" Dictionary="[In_research_points]" DisplayName="Initialize research point" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_9" Key="[In_research_point]" Value="[New Dictionary(Of String, Dictionary(Of String, String))]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, scg:Dictionary(x:String, x:String)" Dictionary="[In_research_points(In_research_point)]" DisplayName="Initialize wikipedia_links" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_10" Key="[InKey_WIKIPEDIA_LINKS]" Value="[New Dictionary(Of String, String)]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, scg:Dictionary(x:String, x:String)" Dictionary="[In_research_points(In_research_point)]" DisplayName="Initialize journal_links" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_11" Key="[InKey_JOURNAL_LINKS]" Value="[New Dictionary(Of String, String)]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, scg:Dictionary(x:String, x:String)" Dictionary="[In_research_points(In_research_point)]" DisplayName="Initialize youtube_links" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_12" Key="[InKey_YOUTUBE_LINKS]" Value="[New Dictionary(Of String, String)]" />
   </Sequence>
 </Activity>

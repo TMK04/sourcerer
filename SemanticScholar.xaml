@@ -3,7 +3,7 @@
     <x:Property Name="In_research_point" Type="InArgument(x:String)" />
     <x:Property Name="Out_data" Type="OutArgument(scg:IEnumerable(njl:JObject))" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1208,822.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>825.6,602.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -103,7 +103,7 @@
           <Literal x:TypeArguments="x:String">20</Literal>
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="fields">
-          <Literal x:TypeArguments="x:String">isOpenAccess</Literal>
+          <Literal x:TypeArguments="x:String">title,isOpenAccess</Literal>
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="query">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="In_research_point" />
