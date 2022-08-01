@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>825.6,860.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>825.6,1159.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="43">
@@ -55,7 +55,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -91,22 +91,26 @@
       <AssemblyReference>Microsoft.Activities.Extensions</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Global Sequence" sap:VirtualizedContainerService.HintSize="478.4,796" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Global Sequence" sap:VirtualizedContainerService.HintSize="495.2,1094.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Global Try Catch" sap:VirtualizedContainerService.HintSize="436.8,703.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Global Try Catch" sap:VirtualizedContainerService.HintSize="453.6,1001.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Global Try" sap:VirtualizedContainerService.HintSize="241.6,472" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Sequence DisplayName="Global Try" sap:VirtualizedContainerService.HintSize="416.8,770.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <Sequence.Variables>
             <Variable x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" Name="research_points" />
             <Variable x:TypeArguments="x:String" Default="journal_links" Name="Key_JOURNAL_LINKS" />
             <Variable x:TypeArguments="x:String" Default="wikipedia_link" Name="Key_WIKIPEDIA_LINK" />
             <Variable x:TypeArguments="x:String" Default="youtube_links" Name="Key_YOUTUBE_LINKS" />
+            <Variable x:TypeArguments="x:String" Name="email" />
+            <Variable x:TypeArguments="x:Boolean" Name="url_provided" />
+            <Variable x:TypeArguments="x:Boolean" Name="email_provided" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -114,25 +118,26 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Extraction" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Extraction" sap:VirtualizedContainerService.HintSize="375.2,492" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <Sequence.Variables>
-              <Variable x:TypeArguments="x:Boolean" Name="url_provided" />
               <Variable x:TypeArguments="x:Boolean" Name="specific_research_points_provided" />
               <Variable x:TypeArguments="x:String" Name="url" />
               <Variable x:TypeArguments="scg:List(x:String)" Name="specific_research_points" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Input workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Input.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Input workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Input\Main.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <OutArgument x:TypeArguments="x:String" x:Key="Out_url">[url]</OutArgument>
                 <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="Out_specific_research_points">[specific_research_points]</OutArgument>
                 <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_url_provided">[url_provided]</OutArgument>
                 <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">[specific_research_points_provided]</OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_email">[email]</OutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_email_provided">[email_provided]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -343,10 +348,10 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <ParallelForEach x:TypeArguments="x:String" DisplayName="Map specific_research_points to research_points" sap:VirtualizedContainerService.HintSize="574.4,1080" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_4" Values="[specific_research_points]">
+                <ParallelForEach x:TypeArguments="x:String" DisplayName="Map specific_research_points to research_points" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_4" Values="[specific_research_points]">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -413,7 +418,7 @@
               </If.Then>
             </If>
           </Sequence>
-          <ParallelForEach x:TypeArguments="x:String" DisplayName="Add to journal_links" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_11" Values="[research_points.Keys]">
+          <ParallelForEach x:TypeArguments="x:String" DisplayName="Add to journal_links" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_11" Values="[research_points.Keys]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -485,7 +490,7 @@
               </Sequence>
             </ActivityAction>
           </ParallelForEach>
-          <ParallelForEach x:TypeArguments="x:String" DisplayName="Add to youtube_links" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_12" Values="[research_points.Keys]">
+          <ParallelForEach x:TypeArguments="x:String" DisplayName="Add to youtube_links" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_12" Values="[research_points.Keys]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -529,17 +534,10 @@
               </Sequence>
             </ActivityAction>
           </ParallelForEach>
-          <Sequence DisplayName="Storage &amp; Presentation" sap:VirtualizedContainerService.HintSize="200,84.8" sap2010:WorkflowViewState.IdRef="Sequence_28">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </Sequence>
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="420,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -550,7 +548,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[exception]" />
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[exception]" />
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
