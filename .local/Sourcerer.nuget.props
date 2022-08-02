@@ -13,6 +13,7 @@
     <SourceRoot Include="C:\Users\floer\.nuget\packages\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgUiPath_Mail_Activities Condition=" '$(PkgUiPath_Mail_Activities)' == '' ">C:\Users\floer\.nuget\packages\uipath.mail.activities\1.12.3</PkgUiPath_Mail_Activities>
     <PkgMicrosoft_Activities_Extensions Condition=" '$(PkgMicrosoft_Activities_Extensions)' == '' ">C:\Users\floer\.nuget\packages\microsoft.activities.extensions\2.0.6.9</PkgMicrosoft_Activities_Extensions>
   </PropertyGroup>
 </Project>

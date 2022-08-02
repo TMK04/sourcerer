@@ -9,7 +9,7 @@
   <sap:VirtualizedContainerService.HintSize>825.6,1880</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="43">
+    <scg:List x:TypeArguments="x:String" Capacity="86">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -53,10 +53,13 @@
       <x:String>UiPath.UIAutomationCore.Contracts</x:String>
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="72">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -92,6 +95,8 @@
       <AssemblyReference>Microsoft.Activities.Extensions</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
@@ -149,9 +154,9 @@
                 <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">
                   <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="specific_research_points_provided" />
                 </OutArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="In_PATH">
-                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="In_PATH" />
-                </OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="In_PATH">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="In_PATH" />
+                </InArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -574,9 +579,9 @@
               <InArgument x:TypeArguments="x:Boolean" x:Key="In_srp_provided">
                 <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="specific_research_points_provided" />
               </InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="In_PATH">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="In_PATH" />
-              </OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="In_PATH">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="In_PATH" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>

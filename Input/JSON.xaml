@@ -6,7 +6,7 @@
     <x:Property Name="Out_specific_research_points_provided" Type="OutArgument(x:Boolean)" />
     <x:Property Name="Out_email" Type="OutArgument(x:String)" />
     <x:Property Name="Out_email_provided" Type="OutArgument(x:Boolean)" />
-    <x:Property Name="In_PATH" Type="OutArgument(x:String)" />
+    <x:Property Name="In_PATH" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -75,6 +75,7 @@
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="JSON Sequence" sap:VirtualizedContainerService.HintSize="425.6,827.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -87,7 +88,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile Content="[input]" DisplayName="Read input.json" FileName="input.json" sap:VirtualizedContainerService.HintSize="384,80.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:ReadTextFile Content="[input]" DisplayName="Read input.json" FileName="[In_PATH+&quot;input.json&quot;]" sap:VirtualizedContainerService.HintSize="384,80.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
     <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[deserialized_input]" JsonString="[input]" />
     <Assign DisplayName="Pick url" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
