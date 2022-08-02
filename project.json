@@ -1,7 +1,7 @@
 {
   "name": "Sourcerer",
   "description": "Sourcerer is a bot that assists research by extracting key research points (words/phrases/topics) from web articles and linking them to external references (Wikipedia page, YouTube videos, and journal articles).",
-  "main": "Main.xaml",
+  "main": "src\\Main.xaml",
   "dependencies": {
     "Microsoft.Activities.Extensions": "[2.0.6.9]",
     "UiPath.Form.Activities": "[1.9.6]",
@@ -47,8 +47,8 @@
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
     {
-      "filePath": "Main.xaml",
-      "uniqueId": "f354e75f-3b37-41d8-b8c0-31a58588b873",
+      "filePath": "src\\Main.xaml",
+      "uniqueId": "d471658f-31b6-4bf3-ab7a-9d669754de7b",
       "input": [],
       "output": []
     }

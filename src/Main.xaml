@@ -97,7 +97,6 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Global Sequence" sap:VirtualizedContainerService.HintSize="644.8,2413.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
@@ -134,29 +133,15 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Input workflow" sap:VirtualizedContainerService.HintSize="483.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Input\Main.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Input workflow" sap:VirtualizedContainerService.HintSize="483.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Input\Main.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <OutArgument x:TypeArguments="x:String" x:Key="Out_url">
-                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="url" />
-                </OutArgument>
-                <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="Out_specific_research_points">
-                  <mva:VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="specific_research_points" />
-                </OutArgument>
-                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_url_provided">
-                  <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="url_provided" />
-                </OutArgument>
-                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_email_provided">
-                  <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="email_provided" />
-                </OutArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="Out_email">
-                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="email" />
-                </OutArgument>
-                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">
-                  <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="specific_research_points_provided" />
-                </OutArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="In_PATH">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="In_PATH" />
-                </InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_url">[url]</OutArgument>
+                <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="Out_specific_research_points">[specific_research_points]</OutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_url_provided">[url_provided]</OutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_email_provided">[email_provided]</OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_email">[email]</OutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">[specific_research_points_provided]</OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="In_PATH">[In_PATH]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -192,7 +177,7 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TextRazor workflow" sap:VirtualizedContainerService.HintSize="262.4,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="TextRazor.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TextRazor workflow" sap:VirtualizedContainerService.HintSize="262.4,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\TextRazor.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="In_X_TEXTRAZOR_KEY">[In_X_TEXTRAZOR_KEY]</InArgument>
                       <OutArgument x:TypeArguments="njl:JObject[]" x:Key="Out_entities">[entities]</OutArgument>
@@ -276,7 +261,7 @@
                                   </sap:WorkflowViewStateService.ViewState>
                                   <maes:AddToDictionary x:TypeArguments="x:String, scg:List(x:Decimal)" Dictionary="[relevances]" DisplayName="Initialize relevance" sap:VirtualizedContainerService.HintSize="541.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_4" Key="[entity_id]" Value="[New List(Of Decimal)]" />
                                   <AddToCollection x:TypeArguments="x:Decimal" Collection="[relevances(entity_id)]" DisplayName="Add relevanceScore" sap:VirtualizedContainerService.HintSize="541.6,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_7" Item="[Convert.ToDecimal(entity(&quot;relevanceScore&quot;))]" />
-                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitializeResearchPoint workflow" sap:VirtualizedContainerService.HintSize="541.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="InitializeResearchPoint.xaml">
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitializeResearchPoint workflow" sap:VirtualizedContainerService.HintSize="541.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\InitializeResearchPoint.xaml">
                                     <ui:InvokeWorkflowFile.Arguments>
                                       <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" x:Key="In_research_points">[research_points]</InArgument>
                                       <InArgument x:TypeArguments="x:String" x:Key="InKey_WIKIPEDIA_LINKS">[Key_WIKIPEDIA_LINK]</InArgument>
@@ -390,7 +375,7 @@
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke MediaWiki workflow" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="MediaWiki.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke MediaWiki workflow" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\MediaWiki.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="x:String" x:Key="In_specific_research_point">[specific_research_point]</InArgument>
                           <OutArgument x:TypeArguments="x:String" x:Key="Out_title">[title]</OutArgument>
@@ -418,7 +403,7 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitializeResearchPoint workflow" sap:VirtualizedContainerService.HintSize="397.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="InitializeResearchPoint.xaml">
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitializeResearchPoint workflow" sap:VirtualizedContainerService.HintSize="397.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\InitializeResearchPoint.xaml">
                               <ui:InvokeWorkflowFile.Arguments>
                                 <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" x:Key="In_research_points">[research_points]</InArgument>
                                 <InArgument x:TypeArguments="x:String" x:Key="InKey_WIKIPEDIA_LINKS">[Key_WIKIPEDIA_LINK]</InArgument>
@@ -466,7 +451,7 @@
                     <InArgument x:TypeArguments="x:Int32">[Math.Max(research_points.Count * 600, 6000)]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SemanticScholar workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SemanticScholar.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SemanticScholar workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\SemanticScholar.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="x:String" x:Key="In_research_point">[research_point]</InArgument>
                     <OutArgument x:TypeArguments="scg:IEnumerable(njl:JObject)" x:Key="Out_data">[data]</OutArgument>
@@ -520,7 +505,7 @@
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:String" Name="research_point" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Add to youtube_links Sequence" sap:VirtualizedContainerService.HintSize="472,502.4" sap2010:WorkflowViewState.IdRef="Sequence_30">
+              <Sequence DisplayName="Add to youtube_links Sequence" sap:VirtualizedContainerService.HintSize="472.8,502.4" sap2010:WorkflowViewState.IdRef="Sequence_30">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="links" />
                   <Variable x:TypeArguments="x:String" Default="url" Name="Key_URL" />
@@ -532,58 +517,36 @@
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke YouTube workflow" sap:VirtualizedContainerService.HintSize="430.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="YouTube.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke YouTube workflow" sap:VirtualizedContainerService.HintSize="431.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\YouTube.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="In_research_point">
-                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="research_point" />
-                    </InArgument>
-                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="Out_links">
-                      <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="links" />
-                    </OutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="In_research_point">[research_point]</InArgument>
+                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="Out_links">[links]</OutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
-                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[links]" DisplayName="Map links to youtube_links" sap:VirtualizedContainerService.HintSize="430.4,256" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[links]" DisplayName="Map links to youtube_links" sap:VirtualizedContainerService.HintSize="431.2,256" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                   <ui:ForEachRow.Body>
                     <ActivityAction x:TypeArguments="sd:DataRow">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="sd:DataRow" Name="link" />
                       </ActivityAction.Argument>
-                      <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[research_points(research_point)(Key_YOUTUBE_LINKS)]" DisplayName="Add youtube link" sap:VirtualizedContainerService.HintSize="396.8,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_9" Key="[link(Key_TITLE).ToString]" Value="[link(Key_URL).ToString]" />
+                      <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[research_points(research_point)(Key_YOUTUBE_LINKS)]" DisplayName="Add youtube link" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_9" Key="[link(Key_TITLE).ToString]" Value="[link(Key_URL).ToString]" />
                     </ActivityAction>
                   </ui:ForEachRow.Body>
                 </ui:ForEachRow>
               </Sequence>
             </ActivityAction>
           </ParallelForEach>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Markdown workflow" sap:VirtualizedContainerService.HintSize="524.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Markdown\Main.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Markdown workflow" sap:VirtualizedContainerService.HintSize="524.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Markdown\Main.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" x:Key="In_research_points">
-                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" ExpressionText="research_points" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="InKey_WIKIPEDIA_LINK">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Key_WIKIPEDIA_LINK" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="In_url">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="url" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="InKey_JOURNAL_LINKS">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Key_JOURNAL_LINKS" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="InKey_YOUTUBE_LINKS">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Key_YOUTUBE_LINKS" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:Boolean" x:Key="In_url_provided">
-                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="url_provided" />
-              </InArgument>
-              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_srp">
-                <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="specific_research_points" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:Boolean" x:Key="In_srp_provided">
-                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="specific_research_points_provided" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="In_PATH">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="In_PATH" />
-              </InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" x:Key="In_research_points">[research_points]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InKey_WIKIPEDIA_LINK">[Key_WIKIPEDIA_LINK]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="In_url">[url]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InKey_JOURNAL_LINKS">[Key_JOURNAL_LINKS]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InKey_YOUTUBE_LINKS">[Key_YOUTUBE_LINKS]</InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="In_url_provided">[url_provided]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_srp">[specific_research_points]</InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="In_srp_provided">[specific_research_points_provided]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="In_PATH">[In_PATH]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>

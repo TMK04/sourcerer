@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Activity mc:Ignorable="sap sap2010" x:Class="Markdown" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:maes="clr-namespace:Microsoft.Activities.Extensions.Statements;assembly=Microsoft.Activities.Extensions" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="In_research_points" Type="InArgument(scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))))" />
@@ -114,7 +115,7 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddResearchPoint workflow" sap:VirtualizedContainerService.HintSize="396.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Markdown\AddResearchPoint.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddResearchPoint workflow" sap:VirtualizedContainerService.HintSize="396.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Markdown\AddResearchPoint.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" x:Key="In_research_points">[In_research_points]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="InKey_WIKIPEDIA_LINK">[InKey_WIKIPEDIA_LINK]</InArgument>
@@ -167,7 +168,7 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:String" Name="research_point" />
                 </ActivityAction.Argument>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddResearchPoint workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Markdown\AddResearchPoint.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddResearchPoint workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Markdown\AddResearchPoint.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" x:Key="In_research_points">[In_research_points]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="InKey_WIKIPEDIA_LINK">[InKey_WIKIPEDIA_LINK]</InArgument>
