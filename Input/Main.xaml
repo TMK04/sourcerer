@@ -6,6 +6,7 @@
     <x:Property Name="Out_email_provided" Type="OutArgument(x:Boolean)" />
     <x:Property Name="Out_email" Type="OutArgument(x:String)" />
     <x:Property Name="Out_specific_research_points_provided" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="In_PATH" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -105,6 +106,9 @@
             </OutArgument>
             <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_email_provided">
               <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="Out_email_provided" />
+            </OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="In_PATH">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="In_PATH" />
             </OutArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
