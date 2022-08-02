@@ -1,12 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="YouTube" this:YouTube.In_research_point="Statistics" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="YouTube" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="In_research_point" Type="InArgument(x:String)" />
     <x:Property Name="Out_links" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="InKey_TITLE" Type="InArgument(x:String)" />
+    <x:Property Name="InKey_URL" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>825.6,602.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>497.6,584</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>YouTube_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -100,7 +102,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[Out_links]" DisplayName="Extract titles &amp; urls" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='title' attr='text' name2='url' attr2='href'&gt;&lt;webctrl tag='ytd-item-section-renderer' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='ytd-video-renderer' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='h3' /&gt;&lt;webctrl tag='a' /&gt;&lt;webctrl tag='yt-formatted-string' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="333.6,68.8" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="5" SimulateClick="True">
+            <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[Out_links]" DisplayName="Extract titles &amp; urls" ExtractMetadata="[&quot;&lt;extract&gt;&lt;column exact='1' name='&quot;+InKey_TITLE+&quot;' attr='text' name2='&quot;+InKey_URL+&quot;' attr2='href'&gt;&lt;webctrl tag='ytd-item-section-renderer' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='ytd-video-renderer' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='h3' /&gt;&lt;webctrl tag='a' /&gt;&lt;webctrl tag='yt-formatted-string' /&gt;&lt;/column&gt;&lt;/extract&gt;&quot;]" sap:VirtualizedContainerService.HintSize="333.6,68.8" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="5" SimulateClick="True">
               <ui:ExtractData.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a99345e7-d5e3-43ae-87a9-fd5456fe629f" Selector="[String.Format(&quot;&lt;html app='msedge.exe' title='*{0} - YouTube' /&gt;&lt;webctrl parentClass='style-scope ytd-two-column-search-results-renderer' id='contents' tag='DIV' /&gt;&quot;, In_research_point)]" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>

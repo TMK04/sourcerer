@@ -1,18 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Activity mc:Ignorable="sap sap2010" x:Class="JSON" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="Out_url" Type="OutArgument(x:String)" />
-    <x:Property Name="Out_specific_research_points" Type="OutArgument(scg:List(x:String))" />
     <x:Property Name="Out_url_provided" Type="OutArgument(x:Boolean)" />
-    <x:Property Name="Out_specific_research_points_provided" Type="OutArgument(x:Boolean)" />
     <x:Property Name="Out_email" Type="OutArgument(x:String)" />
     <x:Property Name="Out_email_provided" Type="OutArgument(x:Boolean)" />
-    <x:Property Name="In_PATH" Type="InArgument(x:String)" />
+    <x:Property Name="InPath_INPUT" Type="InArgument(x:String)" />
+    <x:Property Name="InKey_URL" Type="InArgument(x:String)" />
+    <x:Property Name="Out_srp" Type="OutArgument(scg:List(x:String))" />
+    <x:Property Name="Out_srp_provided" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="InKey_EMAIL" Type="InArgument(x:String)" />
+    <x:Property Name="InKey_SRPs" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>825.6,892</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>415.2,892</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>JSON_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="58">
@@ -76,7 +78,7 @@
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="JSON Sequence" sap:VirtualizedContainerService.HintSize="425.6,827.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -89,30 +91,30 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile Content="[input]" DisplayName="Read input.json" FileName="[In_PATH+&quot;input.json&quot;]" sap:VirtualizedContainerService.HintSize="384,80.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:ReadTextFile Content="[input]" DisplayName="Read input.json" FileName="[InPath_INPUT]" sap:VirtualizedContainerService.HintSize="384,80.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
     <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[deserialized_input]" JsonString="[input]" />
     <Assign DisplayName="Pick url" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[Out_url]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[deserialized_input("url").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String">[deserialized_input(InKey_URL).ToString]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign DisplayName="Pick specific_research_points" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
-        <OutArgument x:TypeArguments="scg:List(x:String)">[Out_specific_research_points]</OutArgument>
+        <OutArgument x:TypeArguments="scg:List(x:String)">[Out_srp]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="scg:List(x:String)">[deserialized_input("specific_research_points").Values(Of String).ToList()]</InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)">[deserialized_input(InKey_SRPs).Values(Of String).ToList()]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckProvided Workflow" sap:VirtualizedContainerService.HintSize="384,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Input\CheckProvided.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_url_provided">[Out_url_provided]</OutArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">[Out_specific_research_points_provided]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">[Out_srp_provided]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="In_url">[Out_url]</InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_specific_research_points">[Out_specific_research_points]</InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_specific_research_points">[Out_srp]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <Assign DisplayName="Pick email" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_5">
@@ -120,7 +122,7 @@
         <OutArgument x:TypeArguments="x:String">[Out_email]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[deserialized_input("email").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String">[deserialized_input(InKey_EMAIL).ToString]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign DisplayName="Calculate email_provided" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_6">
