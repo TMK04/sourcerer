@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>497.6,584</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>825.6,602.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>YouTube_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -73,7 +73,6 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="YouTube" sap:VirtualizedContainerService.HintSize="508,519.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
