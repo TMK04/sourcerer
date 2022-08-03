@@ -10,11 +10,12 @@
     <x:Property Name="Out_srp_provided" Type="OutArgument(x:Boolean)" />
     <x:Property Name="InKey_EMAIL" Type="InArgument(x:String)" />
     <x:Property Name="InKey_SRPs" Type="InArgument(x:String)" />
+    <x:Property Name="Out_json_str" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>415.2,892</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>825.6,892</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>JSON_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="58">
@@ -83,7 +84,6 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="JSON Sequence" sap:VirtualizedContainerService.HintSize="425.6,827.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="input" />
       <Variable x:TypeArguments="njl:JObject" Name="deserialized_input" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -91,8 +91,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile Content="[input]" DisplayName="Read input.json" FileName="[InPath_INPUT]" sap:VirtualizedContainerService.HintSize="384,80.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[deserialized_input]" JsonString="[input]" />
+    <ui:ReadTextFile Content="[Out_json_str]" DisplayName="Read input.json" FileName="[InPath_INPUT]" sap:VirtualizedContainerService.HintSize="384,80.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[deserialized_input]" JsonString="[Out_json_str]" />
     <Assign DisplayName="Pick url" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[Out_url]</OutArgument>
