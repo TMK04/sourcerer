@@ -11,11 +11,13 @@
     <x:Property Name="InKey_EMAIL" Type="InArgument(x:String)" />
     <x:Property Name="InKey_SRPs" Type="InArgument(x:String)" />
     <x:Property Name="Out_json_str" Type="OutArgument(x:String)" />
+    <x:Property Name="Out_email_subject" Type="OutArgument(x:String)" />
+    <x:Property Name="InKey_EMAIL_SUBJECT" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>825.6,892</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>825.6,1180.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>JSON_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="58">
@@ -50,6 +52,7 @@
       <x:String>UiPath.Web.Activities</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -82,7 +85,7 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="JSON Sequence" sap:VirtualizedContainerService.HintSize="425.6,827.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="JSON Sequence" sap:VirtualizedContainerService.HintSize="524.8,1116" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="njl:JObject" Name="deserialized_input" />
     </Sequence.Variables>
@@ -91,9 +94,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile Content="[Out_json_str]" DisplayName="Read input.json" FileName="[InPath_INPUT]" sap:VirtualizedContainerService.HintSize="384,80.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[deserialized_input]" JsonString="[Out_json_str]" />
-    <Assign DisplayName="Pick url" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:ReadTextFile Content="[Out_json_str]" DisplayName="Read input.json" FileName="[InPath_INPUT]" sap:VirtualizedContainerService.HintSize="483.2,80.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[deserialized_input]" JsonString="[Out_json_str]" />
+    <Assign DisplayName="Pick url" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[Out_url]</OutArgument>
       </Assign.To>
@@ -101,7 +104,7 @@
         <InArgument x:TypeArguments="x:String">[deserialized_input(InKey_URL).ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Pick specific_research_points" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Pick specific_research_points" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[Out_srp]</OutArgument>
       </Assign.To>
@@ -109,7 +112,7 @@
         <InArgument x:TypeArguments="scg:List(x:String)">[deserialized_input(InKey_SRPs).Values(Of String).ToList()]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckProvided Workflow" sap:VirtualizedContainerService.HintSize="384,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Input\CheckProvided.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckProvided Workflow" sap:VirtualizedContainerService.HintSize="483.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Input\CheckProvided.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_url_provided">[Out_url_provided]</OutArgument>
         <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">[Out_srp_provided]</OutArgument>
@@ -117,7 +120,7 @@
         <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_specific_research_points">[Out_srp]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Assign DisplayName="Pick email" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+    <Assign DisplayName="Pick email" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[Out_email]</OutArgument>
       </Assign.To>
@@ -125,7 +128,7 @@
         <InArgument x:TypeArguments="x:String">[deserialized_input(InKey_EMAIL).ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Calculate email_provided" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <Assign DisplayName="Calculate email_provided" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">[Out_email_provided]</OutArgument>
       </Assign.To>
@@ -133,5 +136,26 @@
         <InArgument x:TypeArguments="x:Boolean">[Out_email.Length &gt; 0]</InArgument>
       </Assign.Value>
     </Assign>
+    <If Condition="[Out_email_provided]" sap:VirtualizedContainerService.HintSize="483.2,248.8" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Assign DisplayName="Pick email_title" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[Out_email_subject]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[deserialized_input(InKey_EMAIL_SUBJECT).ToString]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
   </Sequence>
 </Activity>
