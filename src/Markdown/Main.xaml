@@ -2,21 +2,22 @@
   <x:Members>
     <x:Property Name="In_research_points" Type="InArgument(scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))))" />
     <x:Property Name="InKey_WIKIPEDIA_LINK" Type="InArgument(x:String)" />
-    <x:Property Name="In_url" Type="InArgument(x:String)" />
     <x:Property Name="InKey_JOURNAL_LINKS" Type="InArgument(x:String)" />
     <x:Property Name="InKey_YOUTUBE_LINKS" Type="InArgument(x:String)" />
-    <x:Property Name="In_url_provided" Type="InArgument(x:Boolean)" />
     <x:Property Name="In_srp" Type="InArgument(scg:List(x:String))" />
     <x:Property Name="In_srp_provided" Type="InArgument(x:Boolean)" />
     <x:Property Name="InPath_OUTPUT" Type="InArgument(x:String)" />
+    <x:Property Name="In_et_value" Type="InArgument(x:String)" />
+    <x:Property Name="In_et_provided" Type="InArgument(x:Boolean)" />
+    <x:Property Name="In_et" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>825.6,1016.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>825.6,1264.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Markdown_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="27">
+    <scg:List x:TypeArguments="x:String" Capacity="54">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -44,6 +45,9 @@
       <x:String>System.Activities.DynamicUpdate</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>Microsoft.Activities.Extensions.Statements</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -72,9 +76,11 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>Microsoft.Activities.Extensions</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Markdown Sequence" sap:VirtualizedContainerService.HintSize="524.8,952" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Markdown Sequence" sap:VirtualizedContainerService.HintSize="615.2,1200" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)]" Name="article_summary" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[new Dictionary(Of String, String) From {{InKey_WIKIPEDIA_LINK, &quot;Wikipedia Page&quot;},{InKey_JOURNAL_LINKS,&quot;Journal Articles&quot;},{InKey_YOUTUBE_LINKS,&quot;YouTube Videos&quot;}}]" Name="lkm" />
@@ -85,7 +91,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[In_srp_provided]" DisplayName="If srp_provided" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[In_srp_provided]" DisplayName="If srp_provided" sap:VirtualizedContainerService.HintSize="573.6,52.8" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -145,7 +151,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[In_url_provided]" DisplayName="If url_provided" sap:VirtualizedContainerService.HintSize="483.2,592" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[In_et_provided]" DisplayName="If et_provided" sap:VirtualizedContainerService.HintSize="573.6,840" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -153,14 +159,23 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Summarize article" sap:VirtualizedContainerService.HintSize="410.4,403.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
+        <Sequence DisplayName="Summarize article" sap:VirtualizedContainerService.HintSize="538.4,651.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <AddToCollection x:TypeArguments="x:String" Collection="[article_summary]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="368.8,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_14" Item="[&quot;# [Article](&quot;+In_url+&quot;) Keywords&quot;]" />
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Article Keyword" sap:VirtualizedContainerService.HintSize="368.8,248" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[In_research_points.Keys]">
+          <Switch x:TypeArguments="x:String" DisplayName=" Switch et" Expression="[In_et]" sap:VirtualizedContainerService.HintSize="496.8,270.4" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <AddToCollection x:TypeArguments="x:String" x:Key="url" Collection="[article_summary]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_14" Item="[&quot;# [Article](&quot;+In_et_value+&quot;) Keywords&quot;]" />
+            <AddToCollection x:TypeArguments="x:String" x:Key="text" Collection="[article_summary]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_18" Item="# Text Keywords" />
+          </Switch>
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Article Keyword" sap:VirtualizedContainerService.HintSize="496.8,248" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[In_research_points.Keys]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
@@ -196,6 +211,6 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:WriteTextFile DisplayName="Write Text File" FileName="[InPath_OUTPUT]" sap:VirtualizedContainerService.HintSize="483.2,134.4" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[String.join(Environment.NewLine+Environment.NewLine, article_summary.Concat(srp_summary))]" />
+    <ui:WriteTextFile DisplayName="Write Text File" FileName="[InPath_OUTPUT]" sap:VirtualizedContainerService.HintSize="573.6,134.4" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[String.join(Environment.NewLine+Environment.NewLine, article_summary.Concat(srp_summary))]" />
   </Sequence>
 </Activity>

@@ -1,14 +1,16 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Check" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="Out_url_provided" Type="OutArgument(x:Boolean)" />
     <x:Property Name="Out_specific_research_points_provided" Type="OutArgument(x:Boolean)" />
-    <x:Property Name="In_url" Type="InArgument(x:String)" />
     <x:Property Name="In_specific_research_points" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="Out_et_provided" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="In_et" Type="InArgument(x:String)" />
+    <x:Property Name="In_email" Type="InArgument(x:String)" />
+    <x:Property Name="Out_email_provided" Type="InArgument(x:Boolean)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>825.6,606.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>825.6,706.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Check_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -64,20 +66,22 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckProvided Sequence" sap:VirtualizedContainerService.HintSize="524.8,541.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="CheckProvided Sequence" sap:VirtualizedContainerService.HintSize="524.8,641.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Calculate url_provided" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Calculate et_provided" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
-        <OutArgument x:TypeArguments="x:Boolean">[Out_url_provided]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean">[Out_et_provided]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Boolean">[In_url.Length &gt; 0]</InArgument>
+        <InArgument x:TypeArguments="x:Boolean">[not String.IsNullOrEmpty(In_et)]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign DisplayName="Calculate specific_research_points_provided" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_2">
@@ -88,10 +92,18 @@
         <InArgument x:TypeArguments="x:Boolean">[In_specific_research_points.Count &gt; 0]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[not Out_url_provided and not Out_specific_research_points_provided]" DisplayName="Throw if neither url nor specific_research_points was provided" sap:VirtualizedContainerService.HintSize="483.2,248.8" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[not Out_et_provided and not Out_specific_research_points_provided]" DisplayName="Throw if neither et nor specific_research_points was provided" sap:VirtualizedContainerService.HintSize="483.2,248.8" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Throw Exception="[new Exception(&quot;At least one of URL or Specific Research Points must be specified.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        <Throw Exception="[new Exception(&quot;At least one Extraction Target or Specific Research Point must be specified.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
       </If.Then>
     </If>
+    <Assign DisplayName="Calculate email_provided" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">[Out_email_provided]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">[not String.IsNullOrEmpty(In_email)]</InArgument>
+      </Assign.Value>
+    </Assign>
   </Sequence>
 </Activity>
