@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>825.6,2196.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1181.6,2196.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="106">
@@ -209,39 +209,17 @@
           </Assign>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Input workflow" sap:VirtualizedContainerService.HintSize="483.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Input\Main.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="Out_specific_research_points">
-                <mva:VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="srps" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_email_provided">
-                <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="email_provided" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="Out_email">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="email" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">
-                <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="srps_provided" />
-              </OutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="InPath_INPUT">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path_INPUT" />
-              </InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="Out_json_str">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="json_str" />
-              </OutArgument>
-              <InArgument x:TypeArguments="x:Boolean" x:Key="In_FORM">
-                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="In_FORM" />
-              </InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="Out_email_subject">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="email_subject" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="Out_et">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="et" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="Out_et_value">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="et_value" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_et_provided">
-                <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="et_provided" />
-              </OutArgument>
+              <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="Out_specific_research_points">[srps]</OutArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_email_provided">[email_provided]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="Out_email">[email]</OutArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">[srps_provided]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InPath_INPUT">[Path_INPUT]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="Out_json_str">[json_str]</OutArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="In_FORM">[In_FORM]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="Out_email_subject">[email_subject]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="Out_et">[et]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="Out_et_value">[et_value]</OutArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_et_provided">[et_provided]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -333,18 +311,10 @@
                   </If>
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TextRazor workflow" sap:VirtualizedContainerService.HintSize="483.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\TextRazor.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="In_X_TEXTRAZOR_KEY">
-                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="In_X_TEXTRAZOR_KEY" />
-                      </InArgument>
-                      <OutArgument x:TypeArguments="njl:JObject[]" x:Key="Out_entities">
-                        <mva:VisualBasicReference x:TypeArguments="njl:JObject[]" ExpressionText="entities" />
-                      </OutArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="In_et_value">
-                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="et_value" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="In_et">
-                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="et" />
-                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="In_X_TEXTRAZOR_KEY">[In_X_TEXTRAZOR_KEY]</InArgument>
+                      <OutArgument x:TypeArguments="njl:JObject[]" x:Key="Out_entities">[entities]</OutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="In_et_value">[et_value]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="In_et">[et]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -704,36 +674,16 @@
           </ParallelForEach>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Markdown workflow" sap:VirtualizedContainerService.HintSize="483.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Markdown\Main.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" x:Key="In_research_points">
-                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" ExpressionText="research_points" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="InKey_WIKIPEDIA_LINK">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Key_WIKIPEDIA_LINK" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="InKey_JOURNAL_LINKS">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Key_JOURNAL_LINKS" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="InKey_YOUTUBE_LINKS">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Key_YOUTUBE_LINKS" />
-              </InArgument>
-              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_srp">
-                <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="srps" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:Boolean" x:Key="In_srp_provided">
-                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="srps_provided" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="InPath_OUTPUT">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path_OUTPUT" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="In_et_value">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="et_value" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:Boolean" x:Key="In_et_provided">
-                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="et_provided" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="In_et">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="et" />
-              </InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" x:Key="In_research_points">[research_points]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InKey_WIKIPEDIA_LINK">[Key_WIKIPEDIA_LINK]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InKey_JOURNAL_LINKS">[Key_JOURNAL_LINKS]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InKey_YOUTUBE_LINKS">[Key_YOUTUBE_LINKS]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_srp">[srps]</InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="In_srp_provided">[srps_provided]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InPath_OUTPUT">[Path_OUTPUT]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="In_et_value">[et_value]</InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="In_et_provided">[et_provided]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="In_et">[et]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -750,7 +700,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[email_subject]" To="[email]">
+              <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendOutlookMail_2" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[email_subject]" To="[email]">
                 <ui:SendOutlookMail.Files>
                   <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                     <InArgument x:TypeArguments="x:String">[Path_OUTPUT]</InArgument>
