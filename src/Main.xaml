@@ -7,10 +7,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1181.6,2196.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>568,1732</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="106">
+    <scg:List x:TypeArguments="x:String" Capacity="54">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -113,13 +113,13 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Global Sequence" sap:VirtualizedContainerService.HintSize="603.2,2132" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Global Sequence" sap:VirtualizedContainerService.HintSize="495.2,1667.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Global Try Catch" sap:VirtualizedContainerService.HintSize="561.6,2039.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Global Try Catch" sap:VirtualizedContainerService.HintSize="453.6,1574.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Variables>
         <Variable x:TypeArguments="x:String" Name="TIMESTAMP" />
         <Variable x:TypeArguments="x:String" Name="json_str" />
@@ -132,7 +132,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Global Try" sap:VirtualizedContainerService.HintSize="524.8,1808" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Sequence DisplayName="Global Try" sap:VirtualizedContainerService.HintSize="416.8,1343.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <Sequence.Variables>
             <Variable x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" Name="research_points" />
             <Variable x:TypeArguments="x:String" Default="journal_links" Name="Key_JOURNAL_LINKS" />
@@ -146,8 +146,9 @@
             <Variable x:TypeArguments="x:Boolean" Name="srps_provided" />
             <Variable x:TypeArguments="x:String" Name="Path_INPUT" />
             <Variable x:TypeArguments="x:String" Name="Path_OUTPUT" />
-            <Variable x:TypeArguments="x:String" Name="email_subject" />
+            <Variable x:TypeArguments="x:String" Name="title" />
             <Variable x:TypeArguments="x:String" Name="et" />
+            <Variable x:TypeArguments="x:String" Name="summary" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -155,107 +156,127 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign timestamp" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_20">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[TIMESTAMP]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[DateTime.UtcNow.ToString]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <If Condition="[String.IsNullOrEmpty(In_PATH)]" DisplayName="If Path not provided" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="If_14">
+          <Sequence DisplayName="Assign Variables" sap:VirtualizedContainerService.HintSize="375.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_43">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If.Then>
-              <Throw Exception="[New Exception(&quot;Missing Argument: In_PATH&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
-            </If.Then>
-            <If.Else>
-              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_37">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </Sequence>
-            </If.Else>
-          </If>
-          <Assign DisplayName="Assign input path" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_18">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[Path_INPUT]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[In_PATH+"input.json"]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <Assign DisplayName="Assign output path" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_21">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[Path_LOG]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[In_PATH+"log.csv"]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <Assign DisplayName="Assign output path" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_19">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[Path_OUTPUT]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[In_PATH+"output.md"]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Input workflow" sap:VirtualizedContainerService.HintSize="483.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Input\Main.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="Out_specific_research_points">[srps]</OutArgument>
-              <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_email_provided">[email_provided]</OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="Out_email">[email]</OutArgument>
-              <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">[srps_provided]</OutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="InPath_INPUT">[Path_INPUT]</InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="Out_json_str">[json_str]</OutArgument>
-              <InArgument x:TypeArguments="x:Boolean" x:Key="In_FORM">[In_FORM]</InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="Out_email_subject">[email_subject]</OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="Out_et">[et]</OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="Out_et_value">[et_value]</OutArgument>
-              <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_et_provided">[et_provided]</OutArgument>
-            </ui:InvokeWorkflowFile.Arguments>
+            <Assign DisplayName="Assign timestamp" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[TIMESTAMP]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[DateTime.UtcNow.ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <If Condition="[String.IsNullOrEmpty(In_PATH)]" DisplayName="If Path not provided" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="If_14">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Throw Exception="[New Exception(&quot;Missing Argument: In_PATH&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_37">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <Assign DisplayName="Assign input path" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[Path_INPUT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[In_PATH+"input.json"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign output path" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_21">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[Path_LOG]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[In_PATH+"log.csv"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign output path" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[Path_OUTPUT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[In_PATH+"output.md"]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+          <Sequence DisplayName="Input" sap:VirtualizedContainerService.HintSize="375.2,299.2" sap2010:WorkflowViewState.IdRef="Sequence_44">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="title_provided" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-          </ui:InvokeWorkflowFile>
-          <If Condition="[String.IsNullOrEmpty(email_subject)]" DisplayName="If email_subject not provided" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="If_16">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <If.Then>
-              <Assign DisplayName="Default email_subject" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_22">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[email_subject]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">["Sourcerer "+TIMESTAMP]</InArgument>
-                </Assign.Value>
-              </Assign>
-            </If.Then>
-            <If.Else>
-              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_39">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </Sequence>
-            </If.Else>
-          </If>
-          <Assign DisplayName="Initialize research_points" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Input workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Input\Main.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="Out_specific_research_points">[srps]</OutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_email_provided">[email_provided]</OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_email">[email]</OutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">[srps_provided]</OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="InPath_INPUT">[Path_INPUT]</InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_json_str">[json_str]</OutArgument>
+                <InArgument x:TypeArguments="x:Boolean" x:Key="In_FORM">[In_FORM]</InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_et">[et]</OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_et_value">[et_value]</OutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_et_provided">[et_provided]</OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_title">[title]</OutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_title_provided">[title_provided]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InvokeWorkflowFile>
+            <If Condition="[not title_provided]" DisplayName="If title not provided" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="If_18">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Assign DisplayName="Default title" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_24">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[title]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">["Sourcerer "+TIMESTAMP]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_45">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+          <Assign DisplayName="Initialize research_points" sap:VirtualizedContainerService.HintSize="375.2,60" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))">[research_points]</OutArgument>
             </Assign.To>
@@ -263,7 +284,7 @@
               <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))">[new Dictionary(Of String, Dictionary(Of String, Dictionary(Of String, String)))]</InArgument>
             </Assign.Value>
           </Assign>
-          <Sequence DisplayName="Extraction" sap:VirtualizedContainerService.HintSize="483.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Extraction" sap:VirtualizedContainerService.HintSize="375.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -556,123 +577,131 @@
               </If.Then>
             </If>
           </Sequence>
-          <ParallelForEach x:TypeArguments="x:String" DisplayName="Add to journal_links" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_11" Values="[research_points.Keys]">
+          <Sequence DisplayName="Add links" sap:VirtualizedContainerService.HintSize="375.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_40">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ActivityAction x:TypeArguments="x:String">
-              <ActivityAction.Argument>
-                <DelegateInArgument x:TypeArguments="x:String" Name="research_point" />
-              </ActivityAction.Argument>
-              <Sequence DisplayName="Add to journal_links Sequence" sap:VirtualizedContainerService.HintSize="804,964" sap2010:WorkflowViewState.IdRef="Sequence_25">
-                <Sequence.Variables>
-                  <Variable x:TypeArguments="scg:IEnumerable(njl:JObject)" Name="data" />
-                  <Variable x:TypeArguments="x:Int32" Name="timeout" />
-                </Sequence.Variables>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <Assign sap:VirtualizedContainerService.HintSize="762.4,60" sap2010:WorkflowViewState.IdRef="Assign_17">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:Int32">[timeout]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:Int32">[Math.Max(research_points.Count * 600, 6000)]</InArgument>
-                  </Assign.Value>
-                </Assign>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SemanticScholar workflow" sap:VirtualizedContainerService.HintSize="762.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\SemanticScholar.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="In_research_point">[research_point]</InArgument>
-                    <OutArgument x:TypeArguments="scg:IEnumerable(njl:JObject)" x:Key="Out_data">[data]</OutArgument>
-                    <OutArgument x:TypeArguments="x:Int32" x:Key="In_timeout">[timeout]</OutArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
-                </ui:InvokeWorkflowFile>
-                <ui:ForEach x:TypeArguments="njl:JObject" CurrentIndex="{x:Null}" DisplayName="Map deserialized_res to Out_links" sap:VirtualizedContainerService.HintSize="762.4,617.6" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[data]">
-                  <ui:ForEach.Body>
-                    <ActivityAction x:TypeArguments="njl:JObject">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="njl:JObject" Name="item" />
-                      </ActivityAction.Argument>
-                      <If Condition="[research_points(research_point)(Key_JOURNAL_LINKS).Count = 5]" DisplayName="If Out_data.Count = 5" sap:VirtualizedContainerService.HintSize="727.2,483.2" sap2010:WorkflowViewState.IdRef="If_11">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <If.Then>
-                          <ui:Break sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Break_2" />
-                        </If.Then>
-                        <If.Else>
-                          <If Condition="[Convert.ToBoolean(item(&quot;isOpenAccess&quot;))]" DisplayName="If isOpenAccess" sap:VirtualizedContainerService.HintSize="483.2,324" sap2010:WorkflowViewState.IdRef="If_10">
-                            <If.Then>
-                              <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[research_points(research_point)(Key_JOURNAL_LINKS)]" DisplayName="Add journal link" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_8" Key="[&quot;https://www.semanticscholar.org/paper/&quot;+item(&quot;paperId&quot;).ToString]" Value="[item(&quot;title&quot;).ToString]" />
-                            </If.Then>
-                          </If>
-                        </If.Else>
-                      </If>
-                    </ActivityAction>
-                  </ui:ForEach.Body>
+            <ParallelForEach x:TypeArguments="x:String" DisplayName="Add to journal_links" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_11" Values="[research_points.Keys]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="x:String">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:String" Name="research_point" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Add to journal_links Sequence" sap:VirtualizedContainerService.HintSize="804,964" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="scg:IEnumerable(njl:JObject)" Name="data" />
+                    <Variable x:TypeArguments="x:Int32" Name="timeout" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="762.4,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[timeout]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[Math.Max(research_points.Count * 600, 6000)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SemanticScholar workflow" sap:VirtualizedContainerService.HintSize="762.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\SemanticScholar.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="In_research_point">[research_point]</InArgument>
+                      <OutArgument x:TypeArguments="scg:IEnumerable(njl:JObject)" x:Key="Out_data">[data]</OutArgument>
+                      <OutArgument x:TypeArguments="x:Int32" x:Key="In_timeout">[timeout]</OutArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                  <ui:ForEach x:TypeArguments="njl:JObject" CurrentIndex="{x:Null}" DisplayName="Map deserialized_res to Out_links" sap:VirtualizedContainerService.HintSize="762.4,617.6" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[data]">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="njl:JObject">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="njl:JObject" Name="item" />
+                        </ActivityAction.Argument>
+                        <If Condition="[research_points(research_point)(Key_JOURNAL_LINKS).Count = 5]" DisplayName="If Out_data.Count = 5" sap:VirtualizedContainerService.HintSize="727.2,483.2" sap2010:WorkflowViewState.IdRef="If_11">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <ui:Break sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Break_2" />
+                          </If.Then>
+                          <If.Else>
+                            <If Condition="[Convert.ToBoolean(item(&quot;isOpenAccess&quot;))]" DisplayName="If isOpenAccess" sap:VirtualizedContainerService.HintSize="483.2,324" sap2010:WorkflowViewState.IdRef="If_10">
+                              <If.Then>
+                                <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[research_points(research_point)(Key_JOURNAL_LINKS)]" DisplayName="Add journal link" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_8" Key="[&quot;https://www.semanticscholar.org/paper/&quot;+item(&quot;paperId&quot;).ToString]" Value="[item(&quot;title&quot;).ToString]" />
+                              </If.Then>
+                            </If>
+                          </If.Else>
+                        </If>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ForEach>
+                </Sequence>
+              </ActivityAction>
+            </ParallelForEach>
+            <ParallelForEach x:TypeArguments="x:String" DisplayName="Add to youtube_links" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_12" Values="[research_points.Keys]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="x:String">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:String" Name="research_point" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Add to youtube_links Sequence" sap:VirtualizedContainerService.HintSize="472.8,502.4" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="links" />
+                    <Variable x:TypeArguments="x:String" Default="url" Name="Key_URL" />
+                    <Variable x:TypeArguments="x:String" Default="title" Name="Key_TITLE" />
+                  </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                </ui:ForEach>
-              </Sequence>
-            </ActivityAction>
-          </ParallelForEach>
-          <ParallelForEach x:TypeArguments="x:String" DisplayName="Add to youtube_links" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_12" Values="[research_points.Keys]">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ActivityAction x:TypeArguments="x:String">
-              <ActivityAction.Argument>
-                <DelegateInArgument x:TypeArguments="x:String" Name="research_point" />
-              </ActivityAction.Argument>
-              <Sequence DisplayName="Add to youtube_links Sequence" sap:VirtualizedContainerService.HintSize="472.8,502.4" sap2010:WorkflowViewState.IdRef="Sequence_30">
-                <Sequence.Variables>
-                  <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="links" />
-                  <Variable x:TypeArguments="x:String" Default="url" Name="Key_URL" />
-                  <Variable x:TypeArguments="x:String" Default="title" Name="Key_TITLE" />
-                </Sequence.Variables>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke YouTube workflow" sap:VirtualizedContainerService.HintSize="431.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\YouTube.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="In_research_point">[research_point]</InArgument>
-                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="Out_links">[links]</OutArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="InKey_TITLE">[Key_TITLE]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="InKey_URL">[Key_URL]</InArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
-                </ui:InvokeWorkflowFile>
-                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[links]" DisplayName="Map links to youtube_links" sap:VirtualizedContainerService.HintSize="431.2,256" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-                  <ui:ForEachRow.Body>
-                    <ActivityAction x:TypeArguments="sd:DataRow">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="sd:DataRow" Name="link" />
-                      </ActivityAction.Argument>
-                      <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[research_points(research_point)(Key_YOUTUBE_LINKS)]" DisplayName="Add youtube link" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_9" Key="[link(Key_URL).ToString]" Value="[link(Key_TITLE).ToString]" />
-                    </ActivityAction>
-                  </ui:ForEachRow.Body>
-                </ui:ForEachRow>
-              </Sequence>
-            </ActivityAction>
-          </ParallelForEach>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Markdown workflow" sap:VirtualizedContainerService.HintSize="483.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Markdown\Main.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke YouTube workflow" sap:VirtualizedContainerService.HintSize="431.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\YouTube.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="In_research_point">[research_point]</InArgument>
+                      <OutArgument x:TypeArguments="sd:DataTable" x:Key="Out_links">[links]</OutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="InKey_TITLE">[Key_TITLE]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="InKey_URL">[Key_URL]</InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[links]" DisplayName="Map links to youtube_links" sap:VirtualizedContainerService.HintSize="431.2,256" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                    <ui:ForEachRow.Body>
+                      <ActivityAction x:TypeArguments="sd:DataRow">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="link" />
+                        </ActivityAction.Argument>
+                        <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[research_points(research_point)(Key_YOUTUBE_LINKS)]" DisplayName="Add youtube link" sap:VirtualizedContainerService.HintSize="397.6,135.2" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_9" Key="[link(Key_URL).ToString]" Value="[link(Key_TITLE).ToString]" />
+                      </ActivityAction>
+                    </ui:ForEachRow.Body>
+                  </ui:ForEachRow>
+                </Sequence>
+              </ActivityAction>
+            </ParallelForEach>
+          </Sequence>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Parse workflow" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Summary\Main.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" x:Key="In_research_points">[research_points]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="InKey_WIKIPEDIA_LINK">[Key_WIKIPEDIA_LINK]</InArgument>
@@ -684,23 +713,42 @@
               <InArgument x:TypeArguments="x:String" x:Key="In_et_value">[et_value]</InArgument>
               <InArgument x:TypeArguments="x:Boolean" x:Key="In_et_provided">[et_provided]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="In_et">[et]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="Out_summary">[summary]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeWorkflowFile>
-          <If Condition="[email_provided]" DisplayName="If email_provided" sap:VirtualizedContainerService.HintSize="483.2,335.2" sap2010:WorkflowViewState.IdRef="If_12">
+          <ui:WriteTextFile DisplayName="Write to Markdown" FileName="[Path_OUTPUT]" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[summary]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:WriteTextFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Dillinger workflow" sap:VirtualizedContainerService.HintSize="375.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Dillinger.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="InPath_OUTPUT">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path_OUTPUT" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="In_title">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="title" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <If Condition="[email_provided]" DisplayName="If email_provided" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="If_12">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendOutlookMail_2" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[email_subject]" To="[email]">
+              <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendOutlookMail_3" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[title]" To="[email]">
                 <ui:SendOutlookMail.Files>
                   <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                     <InArgument x:TypeArguments="x:String">[Path_OUTPUT]</InArgument>
@@ -718,7 +766,7 @@
               </Sequence>
             </If.Else>
           </If>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WriteLog workflow" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\WriteLog.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WriteLog workflow" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\WriteLog.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="In_TIMESTAMP">[TIMESTAMP]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="In_json_str">[json_str]</InArgument>
@@ -737,7 +785,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="528,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="420,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>

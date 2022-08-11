@@ -6,11 +6,13 @@
     <x:Property Name="In_et" Type="InArgument(x:String)" />
     <x:Property Name="In_email" Type="InArgument(x:String)" />
     <x:Property Name="Out_email_provided" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="Out_title_provided" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="In_title" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1209.6,818.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>568,806.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Check_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -68,15 +70,24 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckProvided Sequence" sap:VirtualizedContainerService.HintSize="524.8,641.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="CheckProvided Sequence" sap:VirtualizedContainerService.HintSize="524.8,741.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Calculate et_provided" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Calculate title" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">[Out_title_provided]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">[not String.IsNullOrEmpty(In_title)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Calculate et_provided" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">[Out_et_provided]</OutArgument>
       </Assign.To>

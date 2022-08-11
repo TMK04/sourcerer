@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Input" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ufa="clr-namespace:UiPath.Form.Activities;assembly=UiPath.Form.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Input" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ufa="clr-namespace:UiPath.Form.Activities;assembly=UiPath.Form.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="Out_specific_research_points" Type="OutArgument(scg:List(x:String))" />
     <x:Property Name="Out_specific_research_points_provided" Type="OutArgument(x:Boolean)" />
@@ -6,13 +6,14 @@
     <x:Property Name="Out_email_provided" Type="OutArgument(x:Boolean)" />
     <x:Property Name="InKey_EMAIL" Type="InArgument(x:String)" />
     <x:Property Name="InKey_SRPs" Type="InArgument(x:String)" />
-    <x:Property Name="InKey_EMAIL_SUBJECT" Type="InArgument(x:String)" />
-    <x:Property Name="Out_email_subject" Type="OutArgument(x:String)" />
     <x:Property Name="Out_et_value" Type="OutArgument(x:String)" />
     <x:Property Name="Out_et" Type="OutArgument(x:String)" />
     <x:Property Name="Out_et_provided" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="Out_title" Type="OutArgument(x:String)" />
+    <x:Property Name="Out_title_provided" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="InKey_TITLE" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1209.6,1576.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>568,1388</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -85,10 +86,9 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Input Sequence" sap:VirtualizedContainerService.HintSize="524.8,1512" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Input Sequence" sap:VirtualizedContainerService.HintSize="524.8,1323.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="input" />
       <Variable x:TypeArguments="njl:JObject" Name="deserialized_input" />
@@ -100,7 +100,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ufa:FormActivity CreateFormActivityFileName="{x:Null}" CreateFormActivityFilePath="{x:Null}" Dismissed="{x:Null}" FormFieldsInputData="{x:Null}" FormTitle="{x:Null}" IconPath="{x:Null}" LocalCSSFilePath="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" CreateFormId="39087ff5-88e7-4c6d-b5df-2d24184a8693" DisableMaximizeButton="False" DisableMinimizeButton="False" DisableSanitize="False" DisplayName="Create Form" FormFieldsOutputData="[input]" FormHeight="400" FormSchema="%[{&quot;label&quot;:&quot;Extraction Target&quot;,&quot;optionsLabelPosition&quot;:&quot;right&quot;,&quot;tooltip&quot;:&quot;Only either URL or Text can be used to extract keywords from.\n\nAt least one Extraction Target or Specific Research Point must be provided.&quot;,&quot;inline&quot;:false,&quot;tableView&quot;:false,&quot;defaultValue&quot;:&quot;url&quot;,&quot;values&quot;:[{&quot;label&quot;:&quot;URL&quot;,&quot;value&quot;:&quot;url&quot;,&quot;shortcut&quot;:&quot;&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;value&quot;:&quot;text&quot;,&quot;shortcut&quot;:&quot;&quot;}],&quot;key&quot;:&quot;et&quot;,&quot;type&quot;:&quot;radio&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;URL&quot;,&quot;placeholder&quot;:&quot;http[s]://...&quot;,&quot;tooltip&quot;:&quot;If specified, Sourcerer will extract Key Research Points from the article at the URL.&quot;,&quot;hidden&quot;:true,&quot;disabled&quot;:true,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;required&quot;:true,&quot;pattern&quot;:&quot;https?:\\/\\/.+&quot;,&quot;customMessage&quot;:&quot;Invalid URL!&quot;},&quot;key&quot;:&quot;url&quot;,&quot;logic&quot;:[{&quot;name&quot;:&quot;et_url&quot;,&quot;trigger&quot;:{&quot;type&quot;:&quot;javascript&quot;,&quot;javascript&quot;:&quot;return row.et === \&quot;url\&quot;&quot;},&quot;actions&quot;:[{&quot;name&quot;:&quot;enableURL&quot;,&quot;type&quot;:&quot;property&quot;,&quot;property&quot;:{&quot;label&quot;:&quot;Disabled&quot;,&quot;value&quot;:&quot;disabled&quot;,&quot;type&quot;:&quot;boolean&quot;},&quot;state&quot;:false},{&quot;name&quot;:&quot;showURL&quot;,&quot;type&quot;:&quot;property&quot;,&quot;property&quot;:{&quot;label&quot;:&quot;Hidden&quot;,&quot;value&quot;:&quot;hidden&quot;,&quot;type&quot;:&quot;boolean&quot;},&quot;state&quot;:false}]}],&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Text&quot;,&quot;tooltip&quot;:&quot;If specified, Sourcerer will extract Key Research Points from this text.&quot;,&quot;hidden&quot;:true,&quot;showCharCount&quot;:true,&quot;disabled&quot;:true,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;required&quot;:true,&quot;minLength&quot;:1},&quot;key&quot;:&quot;text&quot;,&quot;logic&quot;:[{&quot;name&quot;:&quot;et_text&quot;,&quot;trigger&quot;:{&quot;type&quot;:&quot;javascript&quot;,&quot;javascript&quot;:&quot;return row.et === \&quot;text\&quot;&quot;},&quot;actions&quot;:[{&quot;name&quot;:&quot;enableText&quot;,&quot;type&quot;:&quot;property&quot;,&quot;property&quot;:{&quot;label&quot;:&quot;Disabled&quot;,&quot;value&quot;:&quot;disabled&quot;,&quot;type&quot;:&quot;boolean&quot;},&quot;state&quot;:false},{&quot;name&quot;:&quot;showText&quot;,&quot;type&quot;:&quot;property&quot;,&quot;property&quot;:{&quot;label&quot;:&quot;Hidden&quot;,&quot;value&quot;:&quot;hidden&quot;,&quot;type&quot;:&quot;boolean&quot;},&quot;state&quot;:false}]}],&quot;type&quot;:&quot;textarea&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Specific Research Points&quot;,&quot;tooltip&quot;:&quot;If specified, Sourcerer will search references for the specified points.\nIf URL is also specified, searching will follow after article extraction.\n\nAt least one Extraction Target or Specific Research Point must be provided.&quot;,&quot;addAnother&quot;:&quot;Add Research Point&quot;,&quot;saveRow&quot;:&quot;Add&quot;,&quot;key&quot;:&quot;specific_research_points&quot;,&quot;type&quot;:&quot;editgrid&quot;,&quot;input&quot;:true,&quot;tableView&quot;:false,&quot;components&quot;:[{&quot;label&quot;:&quot;Add a Research Point&quot;,&quot;tooltip&quot;:&quot;A Word/Phrase/Idea to search for&quot;,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;customMessage&quot;:&quot;Please provide a Research Point.&quot;,&quot;minLength&quot;:1},&quot;key&quot;:&quot;specific_research_point&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true}]},{&quot;label&quot;:&quot;Email&quot;,&quot;placeholder&quot;:&quot;...@...&quot;,&quot;tooltip&quot;:&quot;If specified, Sourcerer will send output.md to the specified email.&quot;,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;pattern&quot;:&quot;(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|\&quot;(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\&quot;)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])&quot;,&quot;customMessage&quot;:&quot;Invalid Email!&quot;},&quot;key&quot;:&quot;email&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true,&quot;redrawOn&quot;:&quot;data&quot;},{&quot;label&quot;:&quot;Email Subject&quot;,&quot;hidden&quot;:true,&quot;disabled&quot;:true,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;minLength&quot;:1},&quot;key&quot;:&quot;email_subject&quot;,&quot;logic&quot;:[{&quot;name&quot;:&quot;email_disabled&quot;,&quot;trigger&quot;:{&quot;type&quot;:&quot;javascript&quot;,&quot;javascript&quot;:&quot;return Boolean(row.email);&quot;},&quot;actions&quot;:[{&quot;name&quot;:&quot;enableEmailSubject&quot;,&quot;type&quot;:&quot;property&quot;,&quot;property&quot;:{&quot;label&quot;:&quot;Disabled&quot;,&quot;value&quot;:&quot;disabled&quot;,&quot;type&quot;:&quot;boolean&quot;},&quot;state&quot;:false},{&quot;name&quot;:&quot;showEmailSubject&quot;,&quot;type&quot;:&quot;property&quot;,&quot;property&quot;:{&quot;label&quot;:&quot;Hidden&quot;,&quot;value&quot;:&quot;hidden&quot;,&quot;type&quot;:&quot;boolean&quot;},&quot;state&quot;:false}]}],&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true,&quot;redrawOn&quot;:&quot;data&quot;},{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100120&quot;,&quot;Name&quot;:&quot;Default&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="800" GenerateInputFields="False" sap:VirtualizedContainerService.HintSize="483.2,195.2" sap2010:WorkflowViewState.IdRef="FormActivity_1" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False" StartAsMinimized="False">
+    <ufa:FormActivity CreateFormActivityFileName="{x:Null}" CreateFormActivityFilePath="{x:Null}" Dismissed="{x:Null}" FormFieldsInputData="{x:Null}" FormTitle="{x:Null}" IconPath="{x:Null}" LocalCSSFilePath="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" CreateFormId="39087ff5-88e7-4c6d-b5df-2d24184a8693" DisableMaximizeButton="False" DisableMinimizeButton="False" DisableSanitize="False" DisplayName="Create Form" FormFieldsOutputData="[input]" FormHeight="400" FormSchema="%[{&quot;label&quot;:&quot;Title&quot;,&quot;tooltip&quot;:&quot;Will be used as the Dillinger Document Title and Email Subject.\n\nIf blank, will be defaulted to `Sourcerer TIMESTAMP`&quot;,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;minLength&quot;:1},&quot;key&quot;:&quot;title&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Extraction Target&quot;,&quot;optionsLabelPosition&quot;:&quot;right&quot;,&quot;tooltip&quot;:&quot;Only either URL or Text can be used to extract keywords from.\n\nAt least one Extraction Target or Specific Research Point must be provided.&quot;,&quot;inline&quot;:false,&quot;tableView&quot;:false,&quot;defaultValue&quot;:&quot;url&quot;,&quot;values&quot;:[{&quot;label&quot;:&quot;URL&quot;,&quot;value&quot;:&quot;url&quot;,&quot;shortcut&quot;:&quot;&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;value&quot;:&quot;text&quot;,&quot;shortcut&quot;:&quot;&quot;}],&quot;key&quot;:&quot;et&quot;,&quot;type&quot;:&quot;radio&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;URL&quot;,&quot;placeholder&quot;:&quot;http[s]://...&quot;,&quot;tooltip&quot;:&quot;If specified, Sourcerer will extract Key Research Points from the article at the URL.&quot;,&quot;hidden&quot;:true,&quot;disabled&quot;:true,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;required&quot;:true,&quot;pattern&quot;:&quot;https?:\\/\\/.+&quot;,&quot;customMessage&quot;:&quot;Invalid URL!&quot;},&quot;key&quot;:&quot;url&quot;,&quot;logic&quot;:[{&quot;name&quot;:&quot;et_url&quot;,&quot;trigger&quot;:{&quot;type&quot;:&quot;javascript&quot;,&quot;javascript&quot;:&quot;return row.et === \&quot;url\&quot;&quot;},&quot;actions&quot;:[{&quot;name&quot;:&quot;enableURL&quot;,&quot;type&quot;:&quot;property&quot;,&quot;property&quot;:{&quot;label&quot;:&quot;Disabled&quot;,&quot;value&quot;:&quot;disabled&quot;,&quot;type&quot;:&quot;boolean&quot;},&quot;state&quot;:false},{&quot;name&quot;:&quot;showURL&quot;,&quot;type&quot;:&quot;property&quot;,&quot;property&quot;:{&quot;label&quot;:&quot;Hidden&quot;,&quot;value&quot;:&quot;hidden&quot;,&quot;type&quot;:&quot;boolean&quot;},&quot;state&quot;:false}]}],&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Text&quot;,&quot;tooltip&quot;:&quot;If specified, Sourcerer will extract Key Research Points from this text.&quot;,&quot;hidden&quot;:true,&quot;showCharCount&quot;:true,&quot;disabled&quot;:true,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;required&quot;:true,&quot;minLength&quot;:1},&quot;key&quot;:&quot;text&quot;,&quot;logic&quot;:[{&quot;name&quot;:&quot;et_text&quot;,&quot;trigger&quot;:{&quot;type&quot;:&quot;javascript&quot;,&quot;javascript&quot;:&quot;return row.et === \&quot;text\&quot;&quot;},&quot;actions&quot;:[{&quot;name&quot;:&quot;enableText&quot;,&quot;type&quot;:&quot;property&quot;,&quot;property&quot;:{&quot;label&quot;:&quot;Disabled&quot;,&quot;value&quot;:&quot;disabled&quot;,&quot;type&quot;:&quot;boolean&quot;},&quot;state&quot;:false},{&quot;name&quot;:&quot;showText&quot;,&quot;type&quot;:&quot;property&quot;,&quot;property&quot;:{&quot;label&quot;:&quot;Hidden&quot;,&quot;value&quot;:&quot;hidden&quot;,&quot;type&quot;:&quot;boolean&quot;},&quot;state&quot;:false}]}],&quot;type&quot;:&quot;textarea&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Specific Research Points&quot;,&quot;tooltip&quot;:&quot;If specified, Sourcerer will search references for the specified points.\nIf URL is also specified, searching will follow after article extraction.\n\nAt least one Extraction Target or Specific Research Point must be provided.&quot;,&quot;addAnother&quot;:&quot;Add Research Point&quot;,&quot;saveRow&quot;:&quot;Add&quot;,&quot;key&quot;:&quot;specific_research_points&quot;,&quot;type&quot;:&quot;editgrid&quot;,&quot;input&quot;:true,&quot;tableView&quot;:false,&quot;components&quot;:[{&quot;label&quot;:&quot;Add a Research Point&quot;,&quot;tooltip&quot;:&quot;A Word/Phrase/Idea to search for&quot;,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;customMessage&quot;:&quot;Please provide a Research Point.&quot;,&quot;minLength&quot;:1},&quot;key&quot;:&quot;specific_research_point&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true}]},{&quot;label&quot;:&quot;Email&quot;,&quot;placeholder&quot;:&quot;...@...&quot;,&quot;tooltip&quot;:&quot;If specified, Sourcerer will send output.md to the specified email.&quot;,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;pattern&quot;:&quot;(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|\&quot;(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\&quot;)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])&quot;,&quot;customMessage&quot;:&quot;Invalid Email!&quot;},&quot;key&quot;:&quot;email&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true,&quot;redrawOn&quot;:&quot;data&quot;},{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100120&quot;,&quot;Name&quot;:&quot;Default&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="800" GenerateInputFields="False" sap:VirtualizedContainerService.HintSize="483.2,195.2" sap2010:WorkflowViewState.IdRef="FormActivity_1" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False" StartAsMinimized="False">
       <ufa:FormActivity.Body>
         <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
           <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -135,6 +135,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:DeserializeJson>
+    <Assign DisplayName="Pick title" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[Out_title]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[deserialized_input(InKey_TITLE).ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
     <Assign DisplayName="Pick extraction_target" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_9">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[Out_et]</OutArgument>
@@ -175,24 +183,14 @@
     </Assign>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckProvided Workflow" sap:VirtualizedContainerService.HintSize="483.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Input\CalculateProvided.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">
-          <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="Out_specific_research_points_provided" />
-        </OutArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_specific_research_points">
-          <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="Out_specific_research_points" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_et_provided">
-          <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="Out_et_provided" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="In_et">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Out_et" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="In_email">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Out_email" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_email_provided">
-          <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="Out_email_provided" />
-        </OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_specific_research_points_provided">[Out_specific_research_points_provided]</OutArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_specific_research_points">[Out_specific_research_points]</InArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_et_provided">[Out_et_provided]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_et">[Out_et]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_email">[Out_email]</InArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_email_provided">[Out_email_provided]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_title_provided">[Out_title_provided]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_title">[Out_title]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <If Condition="[Out_et_provided]" DisplayName="If et_provided" sap:VirtualizedContainerService.HintSize="483.2,248.8" sap2010:WorkflowViewState.IdRef="If_2">
@@ -208,27 +206,6 @@
       </If.Then>
       <If.Else>
         <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </Sequence>
-      </If.Else>
-    </If>
-    <If Condition="[Out_email_provided]" DisplayName="If email_provided" sap:VirtualizedContainerService.HintSize="483.2,248.8" sap2010:WorkflowViewState.IdRef="If_1">
-      <If.Then>
-        <Assign DisplayName="Pick email_subject" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_8">
-          <Assign.To>
-            <OutArgument x:TypeArguments="x:String">[Out_email_subject]</OutArgument>
-          </Assign.To>
-          <Assign.Value>
-            <InArgument x:TypeArguments="x:String">[deserialized_input(InKey_EMAIL_SUBJECT).ToString]</InArgument>
-          </Assign.Value>
-        </Assign>
-      </If.Then>
-      <If.Else>
-        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

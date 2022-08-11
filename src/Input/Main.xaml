@@ -7,15 +7,16 @@
     <x:Property Name="InPath_INPUT" Type="InArgument(x:String)" />
     <x:Property Name="Out_json_str" Type="OutArgument(x:String)" />
     <x:Property Name="In_FORM" Type="InArgument(x:Boolean)" />
-    <x:Property Name="Out_email_subject" Type="OutArgument(x:String)" />
     <x:Property Name="Out_et" Type="OutArgument(x:String)" />
     <x:Property Name="Out_et_value" Type="OutArgument(x:String)" />
     <x:Property Name="Out_et_provided" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="Out_title" Type="OutArgument(x:String)" />
+    <x:Property Name="Out_title_provided" Type="OutArgument(x:Boolean)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1209.6,818.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>645.6,661.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -54,7 +55,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="26">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="52">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -81,6 +82,7 @@
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Main" sap:VirtualizedContainerService.HintSize="656,596.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -93,7 +95,7 @@
       <TryCatch.Variables>
         <Variable x:TypeArguments="x:String" Default="specific_research_points" Name="Key_SRPs" />
         <Variable x:TypeArguments="x:String" Default="email" Name="Key_EMAIL" />
-        <Variable x:TypeArguments="x:String" Default="email_subject" Name="Key_EMAIL_SUBJECT" />
+        <Variable x:TypeArguments="x:String" Default="title" Name="Key_TITLE" />
       </TryCatch.Variables>
       <TryCatch.Try>
         <If Condition="[In_FORM]" DisplayName="If In_FORM" sap:VirtualizedContainerService.HintSize="577.6,272.8" sap2010:WorkflowViewState.IdRef="If_2">
@@ -103,19 +105,48 @@
           <If.Else>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke JSON Workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Input\JSON.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <OutArgument x:TypeArguments="x:String" x:Key="Out_email">[Out_email]</OutArgument>
-                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_email_provided">[Out_email_provided]</OutArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="InPath_INPUT">[InPath_INPUT]</InArgument>
-                <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="Out_srp">[Out_specific_research_points]</OutArgument>
-                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_srp_provided">[Out_specific_research_points_provided]</OutArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="InKey_EMAIL">[Key_EMAIL]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="InKey_SRPs">[Key_SRPs]</InArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="Out_json_str">[Out_json_str]</OutArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="Out_email_subject">[Out_email_subject]</OutArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="InKey_EMAIL_SUBJECT">[Key_EMAIL_SUBJECT]</InArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="Out_et_value">[Out_et_value]</OutArgument>
-                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_et_provided">[Out_et_provided]</OutArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="Out_et">[Out_et]</OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_email">
+                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="Out_email" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_email_provided">
+                  <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="Out_email_provided" />
+                </OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="InPath_INPUT">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="InPath_INPUT" />
+                </InArgument>
+                <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="Out_srp">
+                  <mva:VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="Out_specific_research_points" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_srp_provided">
+                  <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="Out_specific_research_points_provided" />
+                </OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="InKey_EMAIL">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Key_EMAIL" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="InKey_SRPs">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Key_SRPs" />
+                </InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_json_str">
+                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="Out_json_str" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_et_value">
+                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="Out_et_value" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_et_provided">
+                  <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="Out_et_provided" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_et">
+                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="Out_et" />
+                </OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="InKey_TITLE">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Key_TITLE" />
+                </InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Out_title">
+                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="Out_title" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_title_provided">
+                  <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="Out_title_provided" />
+                </OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
           </If.Else>
@@ -147,23 +178,24 @@
                   <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_email_provided">[Out_email_provided]</OutArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="InKey_EMAIL">[Key_EMAIL]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="InKey_SRPs">[Key_SRPs]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="InKey_EMAIL_SUBJECT">[Key_EMAIL_SUBJECT]</InArgument>
-                  <OutArgument x:TypeArguments="x:String" x:Key="Out_email_subject">[Out_email_subject]</OutArgument>
                   <OutArgument x:TypeArguments="x:String" x:Key="Out_et_value">[Out_et_value]</OutArgument>
                   <OutArgument x:TypeArguments="x:String" x:Key="Out_et">[Out_et]</OutArgument>
                   <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_et_provided">[Out_et_provided]</OutArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="Out_title">[Out_title]</OutArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_title_provided">[Out_title_provided]</OutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="InKey_TITLE">[Key_TITLE]</InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
-              <ui:InvokeCode ContinueOnError="{x:Null}" Code="In_json(In_et) = In_et_value&#xA;In_json(InKey_SRPs) = New JArray(In_srps)&#xA;In_json(InKey_EMAIL) = In_email&#xA;In_json(InKey_EMAIL_SUBJECT) = In_email_subject&#xA;Out_json_str = In_json.ToString" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+              <ui:InvokeCode ContinueOnError="{x:Null}" Code="In_json(InKey_TITLE) = In_title&#xA;In_json(In_et) = In_et_value&#xA;In_json(InKey_SRPs) = New JArray(In_srps)&#xA;In_json(InKey_EMAIL) = In_email&#xA;Out_json_str = In_json.ToString" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
                 <ui:InvokeCode.Arguments>
                   <InArgument x:TypeArguments="x:String" x:Key="In_et">[Out_et]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="In_et_value">[Out_et_value]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="InKey_EMAIL">[Key_EMAIL]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="InKey_SRPs">[Key_SRPs]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="InKey_EMAIL_SUBJECT">[Key_EMAIL_SUBJECT]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="InKey_TITLE">[Key_TITLE]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="In_email">[Out_email]</InArgument>
                   <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_srps">[Out_specific_research_points]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="In_email_subject">[Out_email_subject]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="In_title">[Out_title]</InArgument>
                   <OutArgument x:TypeArguments="x:String" x:Key="Out_json_str">[Out_json_str]</OutArgument>
                   <InArgument x:TypeArguments="njl:JObject" x:Key="In_json">[New JObject]</InArgument>
                 </ui:InvokeCode.Arguments>
