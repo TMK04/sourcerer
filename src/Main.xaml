@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.In_FORM="False" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:maes="clr-namespace:Microsoft.Activities.Extensions.Statements;assembly=Microsoft.Activities.Extensions" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.In_X_TEXTRAZOR_KEY="252f51acf986ea255197c4388e5ed8898ea08df7bb5519c8e8054178" this:Main.In_PATH="C:\Users\floer\Documents\UiPath\Sourcerer\" this:Main.In_FORM="False" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:maes="clr-namespace:Microsoft.Activities.Extensions.Statements;assembly=Microsoft.Activities.Extensions" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="In_X_TEXTRAZOR_KEY" Type="InArgument(x:String)" />
     <x:Property Name="In_PATH" Type="InArgument(x:String)" />
@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>568,1732</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>825.6,1792.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -113,13 +113,13 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Global Sequence" sap:VirtualizedContainerService.HintSize="495.2,1667.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Global Sequence" sap:VirtualizedContainerService.HintSize="495.2,1728" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Global Try Catch" sap:VirtualizedContainerService.HintSize="453.6,1574.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Global Try Catch" sap:VirtualizedContainerService.HintSize="453.6,1635.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Variables>
         <Variable x:TypeArguments="x:String" Name="TIMESTAMP" />
         <Variable x:TypeArguments="x:String" Name="json_str" />
@@ -132,7 +132,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Global Try" sap:VirtualizedContainerService.HintSize="416.8,1343.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Sequence DisplayName="Global Try" sap:VirtualizedContainerService.HintSize="416.8,1404" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <Sequence.Variables>
             <Variable x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" Name="research_points" />
             <Variable x:TypeArguments="x:String" Default="journal_links" Name="Key_JOURNAL_LINKS" />
@@ -148,7 +148,7 @@
             <Variable x:TypeArguments="x:String" Name="Path_OUTPUT" />
             <Variable x:TypeArguments="x:String" Name="title" />
             <Variable x:TypeArguments="x:String" Name="et" />
-            <Variable x:TypeArguments="x:String" Name="summary" />
+            <Variable x:TypeArguments="x:String" Name="output" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -291,7 +291,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[et_provided]" DisplayName="If et_provided" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[et_provided]" DisplayName="If et_provided" sap:VirtualizedContainerService.HintSize="560,969.6" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -352,7 +352,7 @@
                       <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:List(x:Decimal))">[new Dictionary(Of String, List(Of Decimal))]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ParallelForEach x:TypeArguments="njl:JObject" DisplayName="Aggregate entities" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_3" Values="[entities]">
+                  <ParallelForEach x:TypeArguments="njl:JObject" DisplayName="Aggregate entities" sap:VirtualizedContainerService.HintSize="528,632.8" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_3" Values="[entities]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -363,7 +363,7 @@
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="njl:JObject" Name="entity" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="606.4,1336" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="478.4,484" sap2010:WorkflowViewState.IdRef="Sequence_21">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="x:String" Name="entity_id" />
                         </Sequence.Variables>
@@ -373,7 +373,7 @@
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Pick entity_id" sap:VirtualizedContainerService.HintSize="564.8,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                        <Assign DisplayName="Pick entity_id" sap:VirtualizedContainerService.HintSize="436.8,60" sap2010:WorkflowViewState.IdRef="Assign_15">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[entity_id]</OutArgument>
                           </Assign.To>
@@ -381,7 +381,7 @@
                             <InArgument x:TypeArguments="x:String">[entity("entityId").ToString]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <TryCatch DisplayName="Entity Try Catch" sap:VirtualizedContainerService.HintSize="564.8,1143.2" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                        <TryCatch DisplayName="Entity Try Catch" sap:VirtualizedContainerService.HintSize="436.8,291.2" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -392,10 +392,10 @@
                             <AddToCollection x:TypeArguments="x:Decimal" Collection="[relevances(entity_id)]" DisplayName="Add relevanceScore" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_6" Item="[Convert.ToDecimal(entity(&quot;relevanceScore&quot;))]" />
                           </TryCatch.Try>
                           <TryCatch.Catches>
-                            <Catch x:TypeArguments="scg:KeyNotFoundException" sap:VirtualizedContainerService.HintSize="531.2,978.4" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                            <Catch x:TypeArguments="scg:KeyNotFoundException" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_3">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
@@ -701,28 +701,50 @@
               </ActivityAction>
             </ParallelForEach>
           </Sequence>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Parse workflow" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Summary\Main.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Output workflow" sap:VirtualizedContainerService.HintSize="375.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="src\Output\Main.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" x:Key="In_research_points">[research_points]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="InKey_WIKIPEDIA_LINK">[Key_WIKIPEDIA_LINK]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="InKey_JOURNAL_LINKS">[Key_JOURNAL_LINKS]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="InKey_YOUTUBE_LINKS">[Key_YOUTUBE_LINKS]</InArgument>
-              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_srp">[srps]</InArgument>
-              <InArgument x:TypeArguments="x:Boolean" x:Key="In_srp_provided">[srps_provided]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="InPath_OUTPUT">[Path_OUTPUT]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="In_et_value">[et_value]</InArgument>
-              <InArgument x:TypeArguments="x:Boolean" x:Key="In_et_provided">[et_provided]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="In_et">[et]</InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="Out_summary">[summary]</OutArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" x:Key="In_research_points">
+                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, scg:Dictionary(x:String, x:String)))" ExpressionText="research_points" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InKey_WIKIPEDIA_LINK">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Key_WIKIPEDIA_LINK" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InKey_JOURNAL_LINKS">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Key_JOURNAL_LINKS" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InKey_YOUTUBE_LINKS">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Key_YOUTUBE_LINKS" />
+              </InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_srp">
+                <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="srps" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="In_srp_provided">
+                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="srps_provided" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InPath_OUTPUT">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path_OUTPUT" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="In_et_value">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="et_value" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="In_et_provided">
+                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="et_provided" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="In_et">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="et" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="Out_output">
+                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="output" />
+              </OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeWorkflowFile>
-          <ui:WriteTextFile DisplayName="Write to Markdown" FileName="[Path_OUTPUT]" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[summary]">
+          <ui:WriteTextFile DisplayName="Write to Markdown" FileName="[Path_OUTPUT]" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[output]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
